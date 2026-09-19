@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#102938">
-<title>Glodie’s Business Planner</title>
-<meta name="description" content="Glodie’s first draft plan for vehicle glass work, a Lexington garage with overnight parking, and steadier customers.">
+<title>Goldie’s Business Planner</title>
+<meta name="description" content="Goldie’s first draft plan for vehicle glass work, a Lexington garage with overnight parking, and steadier customers.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23102938'/%3E%3Cpath d='M8 7v18m15-18L9 17l14 8' fill='none' stroke='%23f4cf54' stroke-width='4'/%3E%3C/svg%3E">
 <style>
 :root{color-scheme:light;--ink:#102938;--muted:#4f626f;--paper:#f1f5f7;--white:#fff;--line:#ccd9df;--blue:#075bb0;--accent:#f4cf54;--soft:#e5eef4;--green:#0a6350;--warning:#704813;--danger:#a12626;--radius:14px}
@@ -23,9 +23,9 @@
 </head>
 <body>
 <a href="#workspace" style="position:absolute;left:-10000px" onfocus="this.style.left='12px'" onblur="this.style.left='-10000px'">Skip to plan</a>
-<header class="masthead"><div class="shell"><div class="identity"><span class="mark" aria-hidden="true">KY</span><div><div class="brand">Glodie’s Business Planner</div><div class="byline">Vehicle glass · Workspace · Steady customers</div></div></div><button type="button" class="print js-only" id="print-plan">Print / PDF</button></div></header>
+<header class="masthead"><div class="shell"><div class="identity"><span class="mark" aria-hidden="true">KY</span><div><div class="brand">Goldie’s Business Planner</div><div class="byline">Vehicle glass · Workspace · Steady customers</div></div></div><button type="button" class="print js-only" id="print-plan">Print / PDF</button></div></header>
 <div class="shell">
-<div class="intro"><div><div class="eyebrow">Lexington & the Louisville corridor</div><h1>Glodie, plan your next steady month.</h1><p>A first draft built around your vehicle glass work, a Lexington garage with outside overnight parking, and steadier customers.</p></div><div class="stamp">Research checked<br><strong>September 19, 2026</strong></div></div>
+<div class="intro"><div><div class="eyebrow">Lexington & the Louisville corridor</div><h1>Goldie, plan your next steady month.</h1><p>A first draft built around your vehicle glass work, a Lexington garage with outside overnight parking, and steadier customers.</p></div><div class="stamp">Research checked<br><strong>September 19, 2026</strong></div></div>
 <noscript><p class="nojs">The full plan is below. Enable JavaScript to use the calculator and switch between views.</p></noscript>
 <nav class="tabs" role="tablist" aria-label="Business planner views" hidden>
 <button type="button" class="tab" id="tab-plan" role="tab" aria-controls="plan" aria-selected="true" tabindex="0"><span class="tab-number">01</span>Next steps</button>
@@ -65,7 +65,7 @@
 <div class="card full method"><h2>Get a useful “left per job” number.</h2><div class="formula">Selling price, excluding sales tax<br>− Glass, adhesive, supplies, outside calibration, helpers, fees, job travel, and rework<br>= Contribution toward fixed costs and owner pay</div><p>Track payment separately from invoicing. For this cash check, count paid jobs and include their direct costs even if a supplier bill has not been paid yet. It remains a simplified planning calculation.</p><div class="grid" style="margin-top:20px"><div><h3>Compare glass with painting fairly.</h3><p>Divide each job's contribution by all your hours: quoting, buying supplies, driving, working, and follow-up. Then consider each service's fixed costs.</p></div><div><h3>Keep a weekly record.</h3><p>Write down jobs completed, cash collected, direct costs, total hours, rework, and where each customer came from. Price deposits, permits, equipment, and working cash separately before signing for a space.</p></div></div></div></div>
 </section>
 </main>
-<footer class="footer"><p>Prepared for Glodie. Based on the interview and linked public sources checked September 19, 2026. Job volume, margins, partner interest, property availability, and permissions still need confirmation. The business owner makes spending and operating decisions.</p><p>Open the app online.<br>Keep a PDF for offline reference.</p></footer>
+<footer class="footer"><p>Prepared for Goldie. Based on the interview and linked public sources checked September 19, 2026. Job volume, margins, partner interest, property availability, and permissions still need confirmation. The business owner makes spending and operating decisions.</p><p>Open the app online.<br>Keep a PDF for offline reference.</p></footer>
 </div>
 <script>
 (function(){
@@ -80,11 +80,11 @@ function showView(id,focus){
   if(!ids.includes(id)) id='plan';
   panels.forEach((panel,i)=>{panel.hidden=ids[i]!==id;panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby','tab-'+ids[i]);panel.tabIndex=0;tabs[i].setAttribute('aria-selected',String(ids[i]===id));tabs[i].tabIndex=ids[i]===id?0:-1;});
   if(focus){tabs[ids.indexOf(id)].focus();nav.scrollIntoView({block:'start',behavior:'auto'});}
-  try{history.replaceState(null,'','#'+id);}catch(e){}
+  try{if(ids.includes(location.hash.slice(1)))history.replaceState(null,'',location.pathname+location.search);}catch(e){}
 }
 tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>showView(ids[i],false));tab.addEventListener('keydown',event=>{let next=i;if(event.key==='ArrowRight')next=(i+1)%4;else if(event.key==='ArrowLeft')next=(i+3)%4;else if(event.key==='Home')next=0;else if(event.key==='End')next=3;else return;event.preventDefault();showView(ids[next],false);tabs[next].focus();});});
 document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>showView(button.dataset.view,true)));
-window.addEventListener('hashchange',()=>showView(location.hash.slice(1),false));
+window.addEventListener('hashchange',()=>{const id=location.hash.slice(1);if(ids.includes(id))showView(id,false);});
 showView(location.hash.slice(1),false);
 const savedDetails=new Map();
 window.addEventListener('beforeprint',()=>document.querySelectorAll('details').forEach(detail=>{savedDetails.set(detail,detail.open);detail.open=true;}));
@@ -96,7 +96,8 @@ const fields=['jobs','margin','space','overhead'];
 const elements=Object.fromEntries(fields.map(id=>[id,document.getElementById(id)]));
 const money=value=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2}).format(value);
 const amount=value=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:Number.isInteger(value)?0:2,maximumFractionDigits:2}).format(value);
-const cashStorageKey='glodie-planner.cash.v1';
+const cashStorageKey='goldie-planner.cash.v1';
+const legacyCashStorageKey='glodie-planner.cash.v1';
 function saveFigures(){
   try{
     localStorage.setItem(cashStorageKey,JSON.stringify({version:1,values:Object.fromEntries(fields.map(field=>[field,elements[field].value]))}));
@@ -107,13 +108,18 @@ function saveFigures(){
 }
 function restoreFigures(){
   try{
-    const saved=localStorage.getItem(cashStorageKey);
+    const currentSaved=localStorage.getItem(cashStorageKey);
+    const saved=currentSaved===null?localStorage.getItem(legacyCashStorageKey):currentSaved;
     if(!saved){document.getElementById('storage-note').textContent='Your entries will be saved in this browser on this device.';return;}
     const data=JSON.parse(saved);
     if(data.version!==1||!data.values||Array.isArray(data.values)||!fields.every(field=>typeof data.values[field]==='string'&&data.values[field].length<=30))throw new Error('Invalid saved figures');
-    fields.forEach(field=>elements[field].value=data.values[field]);
-    if(fields.some(field=>data.values[field]!==''&&(elements[field].value!==data.values[field]||!elements[field].validity.valid)))throw new Error('Invalid saved figure');
-    document.getElementById('storage-note').textContent='Saved figures restored in this browser. Calculate when ready.';
+    let needsReview=false;
+    fields.forEach(field=>{
+      elements[field].value=data.values[field];
+      if(data.values[field]!==''&&(elements[field].value!==data.values[field]||!elements[field].validity.valid)){elements[field].value='';needsReview=true;}
+    });
+    if(currentSaved===null){try{localStorage.setItem(cashStorageKey,saved);localStorage.removeItem(legacyCashStorageKey);}catch(e){}}
+    document.getElementById('storage-note').textContent=needsReview?'An invalid saved entry was left blank; other figures were restored. Check the period and amounts before calculating.':'Saved figures restored in this browser. Check the period and amounts before calculating.';
   }catch(e){
     form.reset();
     document.getElementById('storage-note').textContent='Saved figures could not be read in this browser. Enter checked figures and keep a PDF copy.';
@@ -122,6 +128,7 @@ function restoreFigures(){
 function forgetFigures(){
   try{
     localStorage.removeItem(cashStorageKey);
+    localStorage.removeItem(legacyCashStorageKey);
     document.getElementById('storage-note').textContent='Saved figures cleared from this browser.';
   }catch(e){
     document.getElementById('storage-note').textContent='Figures cleared on this page, but saved data could not be removed. Clear this site’s browser data to remove saved figures.';
