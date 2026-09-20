@@ -460,7 +460,11 @@ aiCancel.addEventListener('click',()=>{cancelAiEdit();aiStatus.textContent='Edit
 document.querySelectorAll('[data-ai-topic]').forEach(button=>button.addEventListener('click',()=>{if(!aiInput.value.trim()&&!editingAiPlan)aiTopic.value=button.dataset.aiTopic;}));
 document.getElementById('jump-ai-save').addEventListener('click',()=>{
   const view=layouts.get('ai');
-  if(view.state.hidden.includes('ai-next-steps')){view.state.hidden=view.state.hidden.filter(id=>id!=='ai-next-steps');renderLayout(view);persistLayouts();}
+  if(view.state.hidden.includes('ai-next-steps')){
+    view.state.hidden=view.state.hidden.filter(id=>id!=='ai-next-steps');renderLayout(view);
+    const saved=persistLayouts();
+    view.status.textContent='Keep my next steps is shown.'+(saved?' Saved on this device.':' This browser could not save the layout; it will last only for this visit.');
+  }
   aiInput.focus();
 });
 
