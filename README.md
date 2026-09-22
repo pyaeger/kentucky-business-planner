@@ -47,6 +47,22 @@ The prompts are built mostly out of **negative** constraints — what the model 
 
 A planning tool used by someone short on money and time should not fabricate numbers, and should say plainly which figures came from the user and which are guesses. The app itself never sends your answers anywhere — but the AI service you paste into does receive them, and the app says so on the page.
 
+## Verification
+
+**[trades-planner-verification.md](trades-planner-verification.md)** records
+every phone number in the app, checked 2026-09-21 against each organisation's
+own website or an independent directory, with a confidence grade each.
+
+15 of 18 confirmed correct, no errors found. Three could not be checked from an
+automated request and are marked as unchecked rather than assumed good. It also
+records one ambiguity — Medley's Auto Care has four Louisville branches and the
+app does not say which one it lists.
+
+## Licence
+
+MIT. See [LICENSE](LICENSE). The contact and location data is public
+information published by the organisations themselves.
+
 ## Known limitations
 
 Verified by reading the source, September 2026.
